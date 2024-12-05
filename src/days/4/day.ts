@@ -54,16 +54,6 @@ export function partOne(grid: string[][]): number {
 
 export function partTwo(grid: string[][]): number {
   const word = "MAS";
-  const deltas = [
-    [
-      [1, 1],
-      [-1, -1],
-    ],
-    [
-      [-1, 1],
-      [-1, 1],
-    ],
-  ];
 
   let count = 0;
 

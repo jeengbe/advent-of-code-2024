@@ -33,10 +33,10 @@ export function partOne(map: number[]): number {
   );
 }
 
-export function partTwo(grid: number[]): number {
+export function partTwo(map: number[]): number {
   const disk: [number, number | null][] = [];
 
-  for (const [i, size] of grid.entries()) {
+  for (const [i, size] of map.entries()) {
     disk.push([size, i % 2 === 0 ? i / 2 : null]);
   }
 

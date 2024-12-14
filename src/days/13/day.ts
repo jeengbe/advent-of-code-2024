@@ -17,13 +17,6 @@ function invert2x2([[a, b], [c, d]]: number[][]): number[][] | null {
 
 export function partOne(inn: typeof input): number {
   return inn.reduce((acc, { prize, a: clawA, b: clawB }) => {
-    if (prize.x % clawA.x === 0 && prize.x / clawA.x === prize.y / clawA.y) {
-      return acc + prize.x / clawA.x;
-    }
-    if (prize.x % clawB.x === 0 && prize.x / clawB.x === prize.y / clawB.y) {
-      return acc + prize.x / clawB.x;
-    }
-
     const inverse = invert2x2([
       [clawA.x, clawB.x],
       [clawA.y, clawB.y],

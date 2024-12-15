@@ -6,22 +6,14 @@ export function partOne(robots: typeof input, w: number, h: number): number {
   const grid = new Array(h).fill(0).map(() => new Array(w).fill(0));
 
   for (const robot of robots) {
+    robot.pos.x += 100 * robot.vel.x;
+    robot.pos.y += 100 * robot.vel.y;
+
+    // https://stackoverflow.com/questions/4467539/javascript-modulo-gives-a-negative-result-for-negative-numbers
+    robot.pos.x = ((robot.pos.x % w) + w) % w;
+    robot.pos.y = ((robot.pos.y % h) + h) % h;
+
     grid[robot.pos.y][robot.pos.x]++;
-  }
-
-  for (let i = 0; i < 100; i++) {
-    for (const robot of robots) {
-      grid[robot.pos.y][robot.pos.x]--;
-
-      robot.pos.x += robot.vel.x;
-      robot.pos.y += robot.vel.y;
-
-      // https://stackoverflow.com/questions/4467539/javascript-modulo-gives-a-negative-result-for-negative-numbers
-      robot.pos.x = ((robot.pos.x % w) + w) % w;
-      robot.pos.y = ((robot.pos.y % h) + h) % h;
-
-      grid[robot.pos.y][robot.pos.x]++;
-    }
   }
 
   const quads = [
